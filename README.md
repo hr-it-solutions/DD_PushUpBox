@@ -31,6 +31,7 @@ For this, we provide a css class to make the push id content invisible.
 ### Other Features:
 - Close PushUpBox by clicking outside the box or by press escape key.
 - Some settings and CSS adjust functions (See Configuration at dd_pushupbox.js).
+- Minified CSS and compressed JS Versions.
 - Compatible with any jQuery Version.
 - Support all major web browsers.
 
