@@ -32,6 +32,7 @@ For this, we provide a css class to make the push id content invisible.
 - Close PushUpBox by clicking outside the box or by press escape key.
 - Some settings and CSS adjust functions (See Configuration at dd_pushupbox.js).
 - Compatible with any jQuery Version.
+- Support all major web browsers.
 
 ##### Integration to your site::
 
@@ -82,3 +83,12 @@ For this, we provide a css class to make the push id content invisible.
                    closingX: true,              /* Display closingX */
                    closingXHTML: '&#10006;'     /* The content of the closing <button>&#10006;</button> */
                },
+
+# DD_ Namespace
+DD_ stands for  **D**idl**d**u e.K. | HR IT-Solutions (Brand recognition)                   <br>
+It is a namespace prefix, provided to avoid element name conflicts.
+
+<br>
+Author: Didldu e.K. Florian Häusler https://www.hr-it-solution.com                          <br>
+Copyright: (C) 2011 - 2017 Didldu e.K. | HR IT-Solutions                                    <br>
+http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
