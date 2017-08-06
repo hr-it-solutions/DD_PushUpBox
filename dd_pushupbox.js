@@ -7,9 +7,9 @@
  **/
 
 ; var DD_PushUpID,
-      DD_PushUpContent;
+      DD_PushUpContent,
 
-var DD_PushUpBox = function () {
+DD_PushUpBox = function () {
 
     // Configuration
     var config = {
