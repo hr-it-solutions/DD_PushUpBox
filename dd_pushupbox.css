@@ -1,0 +1,58 @@
+/**
+ * @package     DD_PushUpBox (pub)
+ *
+ * @author      HR IT-Solutions Florian Häusler <info@hr-it-solutions.com>
+ * @copyright   Copyright (C) 2017 - 2017 Didldu e.K. | HR IT-Solutions
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+**/
+
+.dd_pushupbox {
+    display: none;
+}
+
+#dd_pub_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+}
+
+#dd_pub {
+    position:absolute;
+    top:50%;
+    left:50%;
+    background-color: #fff;
+    height: auto;
+    /* width comes from js config*/
+}
+
+#dd_pub_title {
+    margin: 0;
+    /* padding comes from js config*/
+    background-color: #eee;
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+}
+#dd_pub_content {
+    /* padding comes from js config*/
+}
+
+#dd_pub_close {
+    position: relative;
+    right: 0;
+    top: 0;
+    float: right;
+    background-color: rgba(255,255,255,0.0);
+    border: none;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    cursor: pointer;
+}
+#dd_pub_close:hover {
+    color: #555;
+}
