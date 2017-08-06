@@ -40,19 +40,19 @@ var DD_PushUpBox = function () {
     * content       the content to push
     * contentTitle  the title for the box
     * */
-    DD_PushUpContent = function (content,contentTitle) {
+    DD_PushUpContent = function (content, contentTitle) {
 
         activeID = false;
 
-        DD_Push(content,contentTitle);
+        DD_Push(content, contentTitle);
     };
 
     function DD_Push(content, contentTitle) {
 
-        var dd_pub = $('#dd_pub'),
-            dd_pub_title = $('#dd_pub_title'),
-            dd_pub_content = $('#dd_pub_content'),
-            dd_pub_overlay = $('#dd_pub_overlay');
+        var dd_pub          = $('#dd_pub'),
+            dd_pub_title    = $('#dd_pub_title'),
+            dd_pub_content  = $('#dd_pub_content'),
+            dd_pub_overlay  = $('#dd_pub_overlay');
 
         // Set Content
         dd_pub_title.html(contentTitle);
