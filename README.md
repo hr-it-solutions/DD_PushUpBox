@@ -1,6 +1,7 @@
 # DD_PushUpBox
 is a lightweight jQuery based div overlay box for displaying content like (html, CMS modules, etc...) over the web page, a PopUP called PushUpBox.
 
+[![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.png?v=102)](https://opensource.org/licenses/GPL-2.0/)
 
 ### DD_PushUpBox provides two functions which can be used from everywhere
 
