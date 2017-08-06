@@ -2,7 +2,7 @@
 is a lightweight jQuery based div overlay box for displaying content like (html, CMS modules, etc...) over the web page, a PopUP called PushUpBox.
 
 
-#### DD_PushUpBox provides two functions which can be used from everywhere
+### DD_PushUpBox provides two functions which can be used from everywhere
 
 **DD_PushUpContent**<br>
 This function is to push custom content to the PushUpBox it expects two parameter
@@ -28,13 +28,13 @@ For this, we provide a css class to make the push id content invisible.
 
 (For example, to hide a login module, which should be placed to the pushUpBox like a login pop up. It's usefull when you use a CMS like Joomla, Wordpress etc... So you can place the login module or any other module to the bottom of your site, give them the .dd_pushupbox class to make it invisible and a custom id for the DD_PushUpID function, to trigger the login PopUp. Thats all, it has never been easier to switch any module, div container etc ... to a PopUp Box. Just push it up ;).
 
-#### Other Features:
+### Other Features:
 - Close PushUpBox by clicking outside the box or by press escape key.
 - Some settings and CSS adjust functions (See Configuration at dd_pushupbox.js).
 - Compatible with any jQuery Version.
 - Support all major web browsers.
 
-#### Integration to your site::
+### Integration to your site::
 
     <head>
         <!-- ... -->
@@ -71,7 +71,7 @@ For this, we provide a css class to make the push id content invisible.
     </script>
 
 
-#### Configurating options for the script. dd_pushupbox.js
+### Configurating options for the script. dd_pushupbox.js
 
        var DD_PushUpBox = function () {
 
