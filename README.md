@@ -12,6 +12,8 @@ This function is to push custom content to the PushUpBox it expects two paramete
 | content        | the content to push   |
 | contentTitle   | the title for the box |
 
+    DD_PushUpContent(content, contentTitle)
+
 **DD_PushUpID**<br>
 This function is to move the content from an sepcific id to the PushUpBox. It expects two parameter
 
@@ -19,6 +21,8 @@ This function is to move the content from an sepcific id to the PushUpBox. It ex
 |:-------------- |:----------------------|
 | contentID      | the id to push        |
 | contentTitle   | the title for the box |
+
+    DD_PushUpID(contentID, contentTitle)
 
 DD_PushUpID has a special handling. It moves the html of the content ID to the PushUpBox and after closing the Box, it moves back.
 
