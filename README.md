@@ -48,13 +48,13 @@ For this, we provide a css class to make the push id content invisible.
         <!-- ... -->
 
         <!-- Usage with DD_PushUpContent() function -->
-        <button onclick="DD_PushUpContent('<p>your pushUpBox html...</p>', 'Box Title')">Show pushUpBox</button>
+        <button onclick="DD_PushUpContent('<p>your pushUpBox html...</p>', 'Box Title')">Show pushUpBox by DD_PushUpContent</button>
 
         <!-- Usage with DD_PushUpID() function -->
         <div class="dd_pushupbox" id="mypopupID1">
             <p>Your content to place at pushUpBox</p>
         </div>
-        <button onclick="DD_PushUpID('mypopupID1','Box Title');">Show contact form</button>
+        <button onclick="DD_PushUpID('mypopupID1','Box Title');">Show pushUpBox by DD_PushUpID</button>
     </body>
 
 ##### Examples of use from a script
