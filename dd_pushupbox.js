@@ -9,7 +9,7 @@
 ; var DD_PushUpID,
       DD_PushUpContent,
 
-DD_PushUpBox = function () {
+DD_PushUpBox = (function($, document, undefined) {
 
     // Configuration
     var config = {
@@ -69,66 +69,74 @@ DD_PushUpBox = function () {
         dd_pub.css({"margin":"-" + dd_pub.height()/2 + "px 0 0 -" + config.width/2 + "px"});
     }
 
-    // Title
-    var pubTitle = '';
-    if(config.title){
-        pubTitle = '<div id="dd_pub_title" style="padding: ' + config.padding + 'px"></div>'
-    }
-    // ClosingX
-    var ClosingX = '';
-    if(config.closingX){
-        ClosingX = '<button id="dd_pub_close">' + config.closingXHTML + '</button>'
-    }
-    // Append box bevor closing body tag
-    $('body').append('<div id="dd_pub_overlay">' +
-            '<div id="dd_pub">' +
-                ClosingX +
-                pubTitle +
-                '<div id="dd_pub_content" style="padding: ' + config.padding + 'px"></div>' +
-            '</div>' +
-        '</div>');
+    var init = function () {
 
-    // DDPushUpClose
-    var DDPushUpClose = function() {
-        $('#dd_pub_overlay').hide();
-
-        var dd_pub_content = $('#dd_pub_content');
-
-        if(activeID){
-            $('#' + activeID).html(dd_pub_content.html());
-            activeID = false;
+        // Title
+        var pubTitle = '';
+        if(config.title){
+            pubTitle = '<div id="dd_pub_title" style="padding: ' + config.padding + 'px"></div>'
         }
+        // ClosingX
+        var ClosingX = '';
+        if(config.closingX){
+            ClosingX = '<button id="dd_pub_close">' + config.closingXHTML + '</button>'
+        }
+        // Append box bevor closing body tag
+        $('body').append('<div id="dd_pub_overlay">' +
+            '<div id="dd_pub">' +
+            ClosingX +
+            pubTitle +
+            '<div id="dd_pub_content" style="padding: ' + config.padding + 'px"></div>' +
+            '</div>' +
+            '</div>');
 
-        dd_pub_content.html('')
+        // DDPushUpClose
+        var DDPushUpClose = function() {
+            $('#dd_pub_overlay').hide();
+
+            var dd_pub_content = $('#dd_pub_content');
+
+            if(activeID){
+                $('#' + activeID).html(dd_pub_content.html());
+                activeID = false;
+            }
+
+            dd_pub_content.html('')
+        };
+
+        // Closing events
+        $('#dd_pub_close').on('click', function () {
+            DDPushUpClose();
+        });
+        $(document).mouseup(function(e)
+        {
+            var ddpuboxcontainer = $("#dd_pub");
+
+            // If the target of the click isn't the container nor a descendant of the container
+            // https://stackoverflow.com/questions/1403615/use-jquery-to-hide-a-div-when-the-user-clicks-outside-of-it
+            if (!ddpuboxcontainer.is(e.target)
+                && ddpuboxcontainer.has(e.target).length === 0)
+            {
+                DDPushUpClose();
+            }
+        });
+        // Escape keycode `27`
+        $(document).keyup(function(e) {
+            if (e.keyCode == 27) {
+                DDPushUpClose();
+            }
+        });
+
     };
 
-    // Closing events
-    $('#dd_pub_close').on('click', function () {
-        DDPushUpClose();
-    });
-    $(document).mouseup(function(e)
-    {
-        var ddpuboxcontainer = $("#dd_pub");
-
-        // If the target of the click isn't the container nor a descendant of the container
-        // https://stackoverflow.com/questions/1403615/use-jquery-to-hide-a-div-when-the-user-clicks-outside-of-it
-        if (!ddpuboxcontainer.is(e.target)
-            && ddpuboxcontainer.has(e.target).length === 0)
-        {
-            DDPushUpClose();
-        }
-    });
-    // Escape keycode `27`
-    $(document).keyup(function(e) {
-        if (e.keyCode == 27) {
-            DDPushUpClose();
-        }
-    });
-};
+    return {
+        init:init
+    }
+}(jQuery, document, undefined));
 
 (function($) {
     $(function()
     {
-        DD_PushUpBox();
+        DD_PushUpBox.init();
     });
 })(jQuery);
