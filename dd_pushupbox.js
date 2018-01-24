@@ -2,96 +2,58 @@
  * @package     DD_PushUpBox (pub)
  *
  * @author      HR IT-Solutions Florian Häusler <info@hr-it-solutions.com>
- * @copyright   Copyright (C) 2017 - 2017 Didldu e.K. | HR IT-Solutions
+ * @copyright   Copyright (C) 2017 - 2018 Didldu e.K. | HR IT-Solutions
  * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
  **/
 
 ; var DD_PushUpID,
       DD_PushUpContent,
+      DD_PushUpClose,
 
-DD_PushUpBox = (function($, document, undefined) {
+    DD_PushUpBox = (function($, document, undefined) {
 
-    // Configuration
-    var config = {
-            width: 200,
-            padding: 10,
-            title: true,
-            closingX: true,
-            closingXHTML: '&#10006;'
-        },
-        activeID;
+        // Configuration
+        var config = {
+                width: 320,
+                padding: 10,
+                title: true,
+                closingX: true,
+                closingXHTML: '&#10006;'
+            },
+            activeID;
 
-    /*
-    * DD_PushUpID function
-    * contentID     the id to push
-    * contentTitle  the title for the box
-    * */
-    DD_PushUpID = function(contentID,contentTitle){
+        /*
+        * DD_PushUpID function
+        * contentID     the id to push
+        * contentTitle  the title for the box
+        * */
+        DD_PushUpID = function(contentID, contentTitle){
 
-        activeID = contentID;
-        var activeElement = $('#' + contentID);
+            DD_PushUpClose();
 
-        DD_Push(activeElement.html(),contentTitle);
-        activeElement.html('');
-    };
+            activeID = contentID;
+            var activeElement = $('#' + contentID);
 
-    /*
-    * DD_PushUpContent Function
-    * content       the content to push
-    * contentTitle  the title for the box
-    * */
-    DD_PushUpContent = function (content, contentTitle) {
+            DD_Push(activeElement.html(),contentTitle);
+            activeElement.html('');
+        };
 
-        activeID = false;
+        /*
+        * DD_PushUpContent Function
+        * content       the content to push
+        * contentTitle  the title for the box
+        * */
+        DD_PushUpContent = function (content, contentTitle) {
 
-        DD_Push(content, contentTitle);
-    };
+            DD_PushUpClose();
 
-    function DD_Push(content, contentTitle) {
+            activeID = false;
 
-        var dd_pub          = $('#dd_pub'),
-            dd_pub_title    = $('#dd_pub_title'),
-            dd_pub_content  = $('#dd_pub_content'),
-            dd_pub_overlay  = $('#dd_pub_overlay');
+            DD_Push(content, contentTitle);
+        };
 
-        // Set Content
-        dd_pub_title.html(contentTitle);
-        dd_pub_content.html(content);
-
-        // Show PushUp Box
-        dd_pub_overlay.show();
-
-        // Calc Height
-        var dd_pub_height = dd_pub_title.height() + dd_pub_content.height() + (config.padding * 4);
-
-        // Adjust CSS
-        dd_pub.css({"width":config.width,"height":"auto","margin":"-" + dd_pub_height/2 + "px 0 0 -" + config.width/2 + "px"});
-        dd_pub.css({"margin":"-" + dd_pub.height()/2 + "px 0 0 -" + config.width/2 + "px"});
-    }
-
-    var init = function () {
-
-        // Title
-        var pubTitle = '';
-        if(config.title){
-            pubTitle = '<div id="dd_pub_title" style="padding: ' + config.padding + 'px"></div>'
-        }
-        // ClosingX
-        var ClosingX = '';
-        if(config.closingX){
-            ClosingX = '<button id="dd_pub_close">' + config.closingXHTML + '</button>'
-        }
-        // Append box bevor closing body tag
-        $('body').append('<div id="dd_pub_overlay">' +
-            '<div id="dd_pub">' +
-            ClosingX +
-            pubTitle +
-            '<div id="dd_pub_content" style="padding: ' + config.padding + 'px"></div>' +
-            '</div>' +
-            '</div>');
-
-        // DDPushUpClose
-        var DDPushUpClose = function() {
+        // DD_PushUpClose
+        DD_PushUpClose = function() {
             $('#dd_pub_overlay').hide();
 
             var dd_pub_content = $('#dd_pub_content');
@@ -104,35 +66,78 @@ DD_PushUpBox = (function($, document, undefined) {
             dd_pub_content.html('')
         };
 
-        // Closing events
-        $('#dd_pub_close').on('click', function () {
-            DDPushUpClose();
-        });
-        $(document).mouseup(function(e)
-        {
-            var ddpuboxcontainer = $("#dd_pub");
+        function DD_Push(content, contentTitle) {
 
-            // If the target of the click isn't the container nor a descendant of the container
-            // https://stackoverflow.com/questions/1403615/use-jquery-to-hide-a-div-when-the-user-clicks-outside-of-it
-            if (!ddpuboxcontainer.is(e.target)
-                && ddpuboxcontainer.has(e.target).length === 0)
+            var dd_pub          = $('#dd_pub'),
+                dd_pub_title    = $('#dd_pub_title'),
+                dd_pub_content  = $('#dd_pub_content'),
+                dd_pub_overlay  = $('#dd_pub_overlay');
+
+            // Set Content
+            dd_pub_title.html(contentTitle);
+            dd_pub_content.html(content);
+
+            // Show PushUp Box
+            dd_pub_overlay.show();
+
+            // Calc Height
+            var dd_pub_height = dd_pub_title.height() + dd_pub_content.height() + (config.padding * 4);
+
+            // Adjust CSS
+            dd_pub.css({"width":config.width,"height":"auto","margin":"-" + dd_pub_height/2 + "px 0 0 -" + config.width/2 + "px"});
+            dd_pub.css({"margin":"-" + dd_pub.height()/2 + "px 0 0 -" + config.width/2 + "px"});
+        }
+
+        var init = function () {
+
+            // Title
+            var pubTitle = '';
+            if(config.title){
+                pubTitle = '<div id="dd_pub_title" style="padding: ' + config.padding + 'px"></div>'
+            }
+            // ClosingX
+            var ClosingX = '';
+            if(config.closingX){
+                ClosingX = '<button id="dd_pub_close">' + config.closingXHTML + '</button>'
+            }
+            // Append box bevor closing body tag
+            $('body').append('<div id="dd_pub_overlay">' +
+                '<div id="dd_pub">' +
+                ClosingX +
+                pubTitle +
+                '<div id="dd_pub_content" style="padding: ' + config.padding + 'px"></div>' +
+                '</div>' +
+                '</div>');
+
+            // Closing events
+            $('#dd_pub_close').on('click', function () {
+                DD_PushUpClose();
+            });
+            $(document).mouseup(function(e)
             {
-                DDPushUpClose();
-            }
-        });
-        // Escape keycode `27`
-        $(document).keyup(function(e) {
-            if (e.keyCode == 27) {
-                DDPushUpClose();
-            }
-        });
+                var ddpuboxcontainer = $("#dd_pub");
 
-    };
+                // If the target of the click isn't the container nor a descendant of the container
+                // https://stackoverflow.com/questions/1403615/use-jquery-to-hide-a-div-when-the-user-clicks-outside-of-it
+                if (!ddpuboxcontainer.is(e.target)
+                    && ddpuboxcontainer.has(e.target).length === 0)
+                {
+                    DD_PushUpClose();
+                }
+            });
+            // Escape keycode `27`
+            $(document).keyup(function(e) {
+                if (e.keyCode == 27) {
+                    DD_PushUpClose();
+                }
+            });
 
-    return {
-        init:init
-    }
-}(jQuery, document, undefined));
+        };
+
+        return {
+            init:init
+        }
+    }(jQuery, document, undefined));
 
 (function($) {
     $(function()
