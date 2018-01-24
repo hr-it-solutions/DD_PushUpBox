@@ -3,7 +3,7 @@ is a lightweight jQuery based div overlay box for displaying content like (html,
 
 [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.png?v=102)](https://opensource.org/licenses/GPL-2.0/)
 
-### DD_PushUpBox provides two functions which can be used from everywhere
+### DD_PushUpBox provides three functions which can be used from everywhere
 
 **DD_PushUpContent**<br>
 This function is to push custom content to the PushUpBox it expects two parameter:
@@ -32,6 +32,9 @@ For this, we provide a css class to make the push related id content invisible.
     .dd_pushupbox
 
 (For example, to provie a invisible login module to the site, which should be placed to the pushUpBox when be called by DD_PushUpID, like a login pop up. It's usefull when you use a CMS like Joomla, Wordpress etc... So you can place the login module or any other module to the bottom of your site, give them the .dd_pushupbox class to make it invisible and a custom id for the DD_PushUpID function, to trigger the login PopUp. Thats all, it has never been easier to switch any module, div container etc ... to a PopUp Box. Just push it up ;).
+
+**DD_PushUpClose**<br>
+This function is to close PushUpBox and kick back any pushed ID if pushed.
 
 ### Other Features:
 - Close PushUpBox by clicking outside the box or by press escape key.
